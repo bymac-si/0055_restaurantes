@@ -19,8 +19,8 @@ default: &default
   encoding: unicode
 
   host: 127.0.0.1
-  port: 5433          # 5432
-  username: postgres
+  port: 5432          # 5433
+  username: marcoscastroabarca
   password: postgres  # es su propio password
 
 

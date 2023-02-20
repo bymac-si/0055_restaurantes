@@ -1,0 +1,19 @@
+  [1m[35m (147.2ms)[0m  [1m[35mCREATE DATABASE "restaurantes_development" ENCODING = 'unicode'[0m
+  [1m[35m (46.0ms)[0m  [1m[35mCREATE DATABASE "restaurantes_test" ENCODING = 'unicode'[0m
+  [1m[35m (24.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7793137809643257750)[0m
+  [1m[35m (20.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTipoComidas (20211015230907)
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (75.0ms)[0m  [1m[35mCREATE TABLE "tipo_comidas" ("id" bigserial primary key, "tipo" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20211015230907"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRestaurantes (20211016014651)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE TABLE "restaurantes" ("id" bigserial primary key, "nombre" character varying, "tipo_comida_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_4445acd4a5"
+FOREIGN KEY ("tipo_comida_id")
+  REFERENCES "tipos_comidas" ("id")
+)[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(7793137809643257750)[0m
